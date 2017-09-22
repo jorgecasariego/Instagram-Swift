@@ -10,16 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let plusButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .red
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        view.addSubview(plusButton)
+        
+        plusButton.heightAnchor.constraint(equalToConstant: 140).isActive = true
+        plusButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        plusButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        plusButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
