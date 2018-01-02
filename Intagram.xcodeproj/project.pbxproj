@@ -13,6 +13,8 @@
 		27805F131F75934B00394D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27805F121F75934B00394D4C /* Assets.xcassets */; };
 		27805F161F75934B00394D4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27805F141F75934B00394D4C /* LaunchScreen.storyboard */; };
 		279CF40E1F79AED800B5A583 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279CF40D1F79AED800B5A583 /* Extensions.swift */; };
+		279CF4101F79BC2A00B5A583 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 279CF40F1F79B56700B5A583 /* GoogleService-Info.plist */; };
+		91850C8AE48FFD969CE006CB /* Pods_Intagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A04D4F2E2E93A068360BC2 /* Pods_Intagram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		27805F151F75934B00394D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27805F171F75934B00394D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		279CF40D1F79AED800B5A583 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		279CF40F1F79B56700B5A583 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6A3C02A59AAE0DD18FE12B86 /* Pods-Intagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Intagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Intagram/Pods-Intagram.debug.xcconfig"; sourceTree = "<group>"; };
+		83A04D4F2E2E93A068360BC2 /* Pods_Intagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Intagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4C84DB0D19F67A8AD84393C /* Pods-Intagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Intagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Intagram/Pods-Intagram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91850C8AE48FFD969CE006CB /* Pods_Intagram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D8459CBCB7AAD3D080A36BD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A3C02A59AAE0DD18FE12B86 /* Pods-Intagram.debug.xcconfig */,
+				A4C84DB0D19F67A8AD84393C /* Pods-Intagram.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		27805EFF1F75934A00394D4C = {
 			isa = PBXGroup;
 			children = (
 				27805F0A1F75934B00394D4C /* Intagram */,
 				27805F091F75934B00394D4C /* Products */,
+				0D8459CBCB7AAD3D080A36BD /* Pods */,
+				3639ADDCDEAD0145916E15E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +81,7 @@
 				27805F121F75934B00394D4C /* Assets.xcassets */,
 				27805F141F75934B00394D4C /* LaunchScreen.storyboard */,
 				27805F171F75934B00394D4C /* Info.plist */,
+				279CF40F1F79B56700B5A583 /* GoogleService-Info.plist */,
 			);
 			path = Intagram;
 			sourceTree = "<group>";
@@ -75,6 +94,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		3639ADDCDEAD0145916E15E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83A04D4F2E2E93A068360BC2 /* Pods_Intagram.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27805F1A1F75934B00394D4C /* Build configuration list for PBXNativeTarget "Intagram" */;
 			buildPhases = (
+				4D016DD9AA5056A6C67EF826 /* [CP] Check Pods Manifest.lock */,
 				27805F041F75934B00394D4C /* Sources */,
 				27805F051F75934B00394D4C /* Frameworks */,
 				27805F061F75934B00394D4C /* Resources */,
+				BB733ED313657301AAECFCD3 /* [CP] Embed Pods Frameworks */,
+				35B3598289C932CCCAD95F6B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -135,12 +165,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				27805F161F75934B00394D4C /* LaunchScreen.storyboard in Resources */,
+				279CF4101F79BC2A00B5A583 /* GoogleService-Info.plist in Resources */,
 				27805F131F75934B00394D4C /* Assets.xcassets in Resources */,
 				27805F111F75934B00394D4C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35B3598289C932CCCAD95F6B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Intagram/Pods-Intagram-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D016DD9AA5056A6C67EF826 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BB733ED313657301AAECFCD3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Intagram/Pods-Intagram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		27805F041F75934B00394D4C /* Sources */ = {
@@ -284,6 +363,7 @@
 		};
 		27805F1B1F75934B00394D4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A3C02A59AAE0DD18FE12B86 /* Pods-Intagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +379,7 @@
 		};
 		27805F1C1F75934B00394D4C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4C84DB0D19F67A8AD84393C /* Pods-Intagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
