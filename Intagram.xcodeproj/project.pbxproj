@@ -23,6 +23,7 @@
 		27A6A24320F793AE001A5AF1 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A6A24220F793AE001A5AF1 /* SharePhotoController.swift */; };
 		27A6A24620F7D68D001A5AF1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A6A24520F7D68D001A5AF1 /* Post.swift */; };
 		27A6A24820F7D824001A5AF1 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A6A24720F7D824001A5AF1 /* UserProfilePhotoCell.swift */; };
+		27A6A24A20F7DCB6001A5AF1 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A6A24920F7DCB6001A5AF1 /* CustomImageView.swift */; };
 		27D33DBF20E68B210086BF4D /* PhotSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D33DBE20E68B210086BF4D /* PhotSelectorController.swift */; };
 		91850C8AE48FFD969CE006CB /* Pods_Intagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A04D4F2E2E93A068360BC2 /* Pods_Intagram.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		27A6A24220F793AE001A5AF1 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		27A6A24520F7D68D001A5AF1 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		27A6A24720F7D824001A5AF1 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
+		27A6A24920F7DCB6001A5AF1 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		27D33DBE20E68B210086BF4D /* PhotSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotSelectorController.swift; sourceTree = "<group>"; };
 		6A3C02A59AAE0DD18FE12B86 /* Pods-Intagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Intagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Intagram/Pods-Intagram.debug.xcconfig"; sourceTree = "<group>"; };
 		83A04D4F2E2E93A068360BC2 /* Pods_Intagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Intagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				279CF40D1F79AED800B5A583 /* Extensions.swift */,
+				27A6A24920F7DCB6001A5AF1 /* CustomImageView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				27A6A24320F793AE001A5AF1 /* SharePhotoController.swift in Sources */,
 				27805F0E1F75934B00394D4C /* SignUpController.swift in Sources */,
 				27A6A23F20F6A57C001A5AF1 /* PhotoSelectorCell.swift in Sources */,
+				27A6A24A20F7DCB6001A5AF1 /* CustomImageView.swift in Sources */,
 				27A6A24620F7D68D001A5AF1 /* Post.swift in Sources */,
 				279CF40E1F79AED800B5A583 /* Extensions.swift in Sources */,
 				27A6A24820F7D824001A5AF1 /* UserProfilePhotoCell.swift in Sources */,
