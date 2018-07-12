@@ -12,6 +12,7 @@ import Firebase
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    var posts: [Post] = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +25,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
         
         setupLogoutButton()
-        
-        //fetchPosts()
-        
         fetchOrderedPosts()
     }
-    
-    var posts: [Post] = [Post]()
     
     fileprivate func fetchOrderedPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -47,28 +43,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         }
     }
     
-    fileprivate func fetchPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let ref = Database.database().reference().child("posts").child(uid)
-        
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            dictionaries.forEach({ (key, value) in
-                print("Key: \(key) and value: \(value)")
-                
-                guard let dictionary = value as? [String: Any] else { return }
-                //let imageUrl = dictionary["imageUrl"] as? String
-                let post = Post(dictionary: dictionary)
-                self.posts.append(post)
-            })
-            
-            self.collectionView?.reloadData()
-        }) { (err) in
-            print("Failed to fetch post: ", err)
-        }
-        
-    }
-    
     fileprivate func setupLogoutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogout))
     }
@@ -77,7 +51,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         let alertController  = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
-            
             do {
                 try Auth.auth().signOut()
                 let loginController = LoginController()
