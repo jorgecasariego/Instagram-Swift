@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2718228B200FECFA00661A32 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718228A200FECFA00661A32 /* LoginController.swift */; };
+		2774D6FD20FCFEA4000C14C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774D6FC20FCFEA4000C14C7 /* User.swift */; };
 		27805F0C1F75934B00394D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27805F0B1F75934B00394D4C /* AppDelegate.swift */; };
 		27805F0E1F75934B00394D4C /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27805F0D1F75934B00394D4C /* SignUpController.swift */; };
 		27805F111F75934B00394D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27805F0F1F75934B00394D4C /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		2718228A200FECFA00661A32 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		2774D6FC20FCFEA4000C14C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27805F081F75934B00394D4C /* Intagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27805F0B1F75934B00394D4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27805F0D1F75934B00394D4C /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				27A6A24520F7D68D001A5AF1 /* Post.swift */,
+				2774D6FC20FCFEA4000C14C7 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				27A6A24620F7D68D001A5AF1 /* Post.swift in Sources */,
 				279CF40E1F79AED800B5A583 /* Extensions.swift in Sources */,
 				27A6A24820F7D824001A5AF1 /* UserProfilePhotoCell.swift in Sources */,
+				2774D6FD20FCFEA4000C14C7 /* User.swift in Sources */,
 				279866121FFBE43A00475925 /* MainTabBarController.swift in Sources */,
 				279866171FFD4E9E00475925 /* UserProfileHeader.swift in Sources */,
 				279866141FFBE59400475925 /* UserProfileController.swift in Sources */,
