@@ -10,6 +10,8 @@
 		2718228B200FECFA00661A32 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718228A200FECFA00661A32 /* LoginController.swift */; };
 		2774D6FD20FCFEA4000C14C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774D6FC20FCFEA4000C14C7 /* User.swift */; };
 		2774D6FF20FD14AB000C14C7 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774D6FE20FD14AB000C14C7 /* FirebaseUtils.swift */; };
+		2774D70220FD1A96000C14C7 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774D70120FD1A96000C14C7 /* UserSearchController.swift */; };
+		2774D70420FD2F66000C14C7 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774D70320FD2F66000C14C7 /* UserSearchCell.swift */; };
 		27805F0C1F75934B00394D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27805F0B1F75934B00394D4C /* AppDelegate.swift */; };
 		27805F0E1F75934B00394D4C /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27805F0D1F75934B00394D4C /* SignUpController.swift */; };
 		27805F111F75934B00394D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27805F0F1F75934B00394D4C /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		2718228A200FECFA00661A32 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2774D6FC20FCFEA4000C14C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2774D6FE20FD14AB000C14C7 /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
+		2774D70120FD1A96000C14C7 /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
+		2774D70320FD2F66000C14C7 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		27805F081F75934B00394D4C /* Intagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27805F0B1F75934B00394D4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27805F0D1F75934B00394D4C /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		2774D70020FD1A82000C14C7 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2774D70120FD1A96000C14C7 /* UserSearchController.swift */,
+				2774D70320FD2F66000C14C7 /* UserSearchCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		27805EFF1F75934A00394D4C = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +126,7 @@
 		27805F0A1F75934B00394D4C /* Intagram */ = {
 			isa = PBXGroup;
 			children = (
+				2774D70020FD1A82000C14C7 /* Search */,
 				27A6A24B20F7EAFC001A5AF1 /* Home */,
 				27A6A24420F7D683001A5AF1 /* Model */,
 				27D33DBD20E68B0B0086BF4D /* AddPhoto */,
@@ -311,12 +325,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2774D70420FD2F66000C14C7 /* UserSearchCell.swift in Sources */,
 				2774D6FF20FD14AB000C14C7 /* FirebaseUtils.swift in Sources */,
 				27A6A24320F793AE001A5AF1 /* SharePhotoController.swift in Sources */,
 				27805F0E1F75934B00394D4C /* SignUpController.swift in Sources */,
 				27A6A23F20F6A57C001A5AF1 /* PhotoSelectorCell.swift in Sources */,
 				27A6A24A20F7DCB6001A5AF1 /* CustomImageView.swift in Sources */,
 				27A6A24620F7D68D001A5AF1 /* Post.swift in Sources */,
+				2774D70220FD1A96000C14C7 /* UserSearchController.swift in Sources */,
 				279CF40E1F79AED800B5A583 /* Extensions.swift in Sources */,
 				27A6A24820F7D824001A5AF1 /* UserProfilePhotoCell.swift in Sources */,
 				2774D6FD20FCFEA4000C14C7 /* User.swift in Sources */,
