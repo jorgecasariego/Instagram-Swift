@@ -17,6 +17,9 @@ class CustomImageView: UIImageView {
     func loadImage(urlString: String) {
         lastURLUsedToLoadImage = urlString
         
+        // Para que no tengamos como un movimiento raro al cargar las imagenes hacemos esto
+        self.image = nil
+        
         guard let url = URL(string: urlString) else { return }
         
         // Verificamos si tenemos cacheado la imagen. Si tenemos asignamos y retornamos

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomePostCellDelegate {
     
     let cellId = "cellId"
     var posts: [Post] = [Post]()
@@ -17,14 +17,34 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // La idea aquí es escuchar si tenemos alguna notificación de actualización de Feeds.
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: SharePhotoController.updateFeedNotificationName, object: nil)
+        
         collectionView?.backgroundColor = .white
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
+        
         setupNavigationItems()
+        fetchAllPosts()
+    }
+    
+    @objc fileprivate func handleUpdateFeed() {
+        handleRefresh()
+    }
+    
+    @objc fileprivate func handleRefresh() {
+        // Ya que al refrescar siguen mostrando los posts de quien dejamos de seguir debemos primero limpiar nuestro array de posts
+        posts.removeAll()
+        fetchAllPosts()
+    }
+    
+    fileprivate func fetchAllPosts() {
         fetchPosts()
         fetchFollowingsUserIds()
-        
     }
     
     fileprivate func fetchFollowingsUserIds() {
@@ -53,7 +73,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let ref = Database.database().reference().child("posts").child(user.uid)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.collectionView?.refreshControl?.endRefreshing()
+            
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
             dictionaries.forEach({ (key, value) in
                 guard let dictionary = value as? [String: Any] else { return }
                 let post = Post(user: user, dictionary: dictionary)
@@ -66,6 +89,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             })
             
             self.collectionView?.reloadData()
+            
         }) { (err) in
             print("Failed to fetch post: ", err)
         }
@@ -73,6 +97,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate func setupNavigationItems() {
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo2"))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera3").withRenderingMode(.alwaysOriginal),  style: .plain, target: self, action: #selector(handleCamera))
+    }
+    
+    @objc fileprivate func handleCamera() {
+        let cameraController = CameraController()
+        present(cameraController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -92,8 +123,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         
-        cell.post = posts[indexPath.item]
+        if indexPath.item < posts.count {
+            cell.post = posts[indexPath.item]
+            cell.delegate = self
+            
+        }
         
         return cell
+    }
+    
+    func didTapComment(post: Post) {
+        print("Message coming from HomeController")
+        print(post.caption)
+        let commentsController = CommentsController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(commentsController, animated: true)
     }
 }

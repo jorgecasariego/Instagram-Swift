@@ -13,7 +13,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
-        let index = viewControllers?.index(of: viewController)
+        let index = viewControllers?.firstIndex(of: viewController)
         
         if index == 2 {
             let layout = UICollectionViewFlowLayout()
@@ -78,7 +78,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         // modify tab bar items insets
         guard let items = tabBar.items else { return }
         for item in items {
-            item.imageInsets = UIEdgeInsetsMake(4, 0, -4, 0)
+            item.imageInsets = UIEdgeInsets.init(top: 4, left: 0, bottom: -4, right: 0)
         }
         
     }

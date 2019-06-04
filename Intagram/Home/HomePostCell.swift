@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol HomePostCellDelegate {
+    func didTapComment(post: Post)
+}
+
 class HomePostCell: UICollectionViewCell {
+    
+    var delegate: HomePostCellDelegate?
     
     var post: Post? {
         didSet {
@@ -28,14 +34,14 @@ class HomePostCell: UICollectionViewCell {
         guard let post = self.post else { return }
         
         
-        let attributedText = NSMutableAttributedString(string: post.user.username, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: post.user.username, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         
-        attributedText.append(NSAttributedString(string: " \(post.caption)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: " \(post.caption)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         
-        attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
+        attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 4)]))
         
         let timeAgoDisplay = post.creationDate.timeAgoDisplay()
-        attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes:[NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.gray]))
+        attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes:[NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.gray]))
         
         captionLabel.attributedText = attributedText
     }
@@ -76,11 +82,19 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
-    let commentButton: UIButton = {
+    // Si queremos que la acción de este boton sea lanzado no podemos declarar la variable con "let". Tenemos que usar "lazy var"
+    lazy var commentButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "comment").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleComment), for: .touchUpInside)
         return button
     }()
+    
+    @objc fileprivate func handleComment() {
+        print("Cmentando foto")
+        guard let post = post else { return }
+        delegate?.didTapComment(post: post)
+    }
     
     let sendButton: UIButton = {
         let button = UIButton(type: .system)

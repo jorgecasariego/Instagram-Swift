@@ -27,7 +27,10 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
             plusButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -76,14 +79,14 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     }()
     
     @objc func handleTextInputChange() {
-        let isFormValid = emailTextField.text?.characters.count ?? 0 > 0 && usernameTextField.text?.characters.count ?? 0 > 0 && passwordTextField.text?.characters.count ?? 0 > 0
+        let isFormValid = emailTextField.text?.isEmpty == false && usernameTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false
         
         if isFormValid {
-            signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 244)
             signUpButton.isEnabled = true
+            signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
         } else {
-            signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
             signUpButton.isEnabled = false
+            signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
         }
     }
     
@@ -102,13 +105,9 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     }()
     
     @objc func handleSignUp() {
-        guard let email = emailTextField.text, email.characters.count > 0 else { return }
-        guard let username = usernameTextField.text, username.characters.count > 0 else { return }
-        guard let password = passwordTextField.text, password.characters.count > 0 else { return }
-        
-        
-        guard let image = self.plusButton.imageView?.image else { return }
-        guard let uploadPhoto = UIImageJPEGRepresentation(image, 0.3) else { return }
+        guard let email = emailTextField.text, !email.isEmpty else { return }
+        guard let username = usernameTextField.text, !username.isEmpty else { return }
+        guard let password = passwordTextField.text, !password.isEmpty else { return }
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
 
@@ -116,6 +115,10 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 print("Failed to create user: ", error)
                 return
             }
+            
+            guard let image = self.plusButton.imageView?.image else { return }
+            guard let uploadPhoto = image.jpegData(compressionQuality: 0.3) else { return }
+            
             
             let filename = NSUUID().uuidString
             Storage.storage().reference().child("profile_images").child(filename).putData(uploadPhoto, metadata: nil) { (metadata, err) in
@@ -151,9 +154,9 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     let alreadyHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         
-        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
-        attributedTitle.append(NSAttributedString(string: "Sign In", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)]))
+        attributedTitle.append(NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)]))
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         
@@ -199,3 +202,8 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}

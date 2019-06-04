@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2718228B200FECFA00661A32 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718228A200FECFA00661A32 /* LoginController.swift */; };
+		27653A9722A6C79F00E91E21 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27653A9622A6C79F00E91E21 /* CameraController.swift */; };
+		27653A9922A6D8F200E91E21 /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27653A9822A6D8F200E91E21 /* PreviewPhotoContainerView.swift */; };
+		27653A9B22A6EB4F00E91E21 /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27653A9A22A6EB4F00E91E21 /* CustomAnimationPresentor.swift */; };
+		27653A9D22A6EB7300E91E21 /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27653A9C22A6EB7300E91E21 /* CustomAnimationDismisser.swift */; };
+		27653A9F22A70EE200E91E21 /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27653A9E22A70EE200E91E21 /* CommentsController.swift */; };
 		2774D6FD20FCFEA4000C14C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774D6FC20FCFEA4000C14C7 /* User.swift */; };
 		2774D6FF20FD14AB000C14C7 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774D6FE20FD14AB000C14C7 /* FirebaseUtils.swift */; };
 		2774D70220FD1A96000C14C7 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774D70120FD1A96000C14C7 /* UserSearchController.swift */; };
@@ -36,6 +41,11 @@
 
 /* Begin PBXFileReference section */
 		2718228A200FECFA00661A32 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		27653A9622A6C79F00E91E21 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		27653A9822A6D8F200E91E21 /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
+		27653A9A22A6EB4F00E91E21 /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
+		27653A9C22A6EB7300E91E21 /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
+		27653A9E22A70EE200E91E21 /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
 		2774D6FC20FCFEA4000C14C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2774D6FE20FD14AB000C14C7 /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		2774D70120FD1A96000C14C7 /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
@@ -96,6 +106,17 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		27653A9522A6C79500E91E21 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				27653A9622A6C79F00E91E21 /* CameraController.swift */,
+				27653A9822A6D8F200E91E21 /* PreviewPhotoContainerView.swift */,
+				27653A9A22A6EB4F00E91E21 /* CustomAnimationPresentor.swift */,
+				27653A9C22A6EB7300E91E21 /* CustomAnimationDismisser.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		2774D70020FD1A82000C14C7 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +147,7 @@
 		27805F0A1F75934B00394D4C /* Intagram */ = {
 			isa = PBXGroup;
 			children = (
+				27653A9522A6C79500E91E21 /* Camera */,
 				2774D70020FD1A82000C14C7 /* Search */,
 				27A6A24B20F7EAFC001A5AF1 /* Home */,
 				27A6A24420F7D683001A5AF1 /* Model */,
@@ -178,6 +200,7 @@
 			children = (
 				27A6A24C20F7EB07001A5AF1 /* HomeController.swift */,
 				27A6A24E20F7EC1A001A5AF1 /* HomePostCell.swift */,
+				27653A9E22A70EE200E91E21 /* CommentsController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -231,11 +254,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Jorge Casariego";
 				TargetAttributes = {
 					27805F071F75934B00394D4C = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -334,15 +358,20 @@
 				27A6A24620F7D68D001A5AF1 /* Post.swift in Sources */,
 				2774D70220FD1A96000C14C7 /* UserSearchController.swift in Sources */,
 				279CF40E1F79AED800B5A583 /* Extensions.swift in Sources */,
+				27653A9B22A6EB4F00E91E21 /* CustomAnimationPresentor.swift in Sources */,
+				27653A9722A6C79F00E91E21 /* CameraController.swift in Sources */,
 				27A6A24820F7D824001A5AF1 /* UserProfilePhotoCell.swift in Sources */,
 				2774D6FD20FCFEA4000C14C7 /* User.swift in Sources */,
 				279866121FFBE43A00475925 /* MainTabBarController.swift in Sources */,
 				279866171FFD4E9E00475925 /* UserProfileHeader.swift in Sources */,
+				27653A9D22A6EB7300E91E21 /* CustomAnimationDismisser.swift in Sources */,
 				279866141FFBE59400475925 /* UserProfileController.swift in Sources */,
 				27805F0C1F75934B00394D4C /* AppDelegate.swift in Sources */,
+				27653A9922A6D8F200E91E21 /* PreviewPhotoContainerView.swift in Sources */,
 				2718228B200FECFA00661A32 /* LoginController.swift in Sources */,
 				27A6A24F20F7EC1A001A5AF1 /* HomePostCell.swift in Sources */,
 				27A6A24120F6AD30001A5AF1 /* PhotoSelectorHeader.swift in Sources */,
+				27653A9F22A70EE200E91E21 /* CommentsController.swift in Sources */,
 				27D33DBF20E68B210086BF4D /* PhotSelectorController.swift in Sources */,
 				27A6A24D20F7EB07001A5AF1 /* HomeController.swift in Sources */,
 			);
@@ -384,6 +413,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -391,6 +421,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -441,6 +472,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -448,6 +480,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -488,7 +521,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jorgecasariego.me.Intagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -504,7 +537,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jorgecasariego.me.Intagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

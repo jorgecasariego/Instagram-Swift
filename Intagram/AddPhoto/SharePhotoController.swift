@@ -67,7 +67,7 @@ class SharePhotoController: UIViewController {
         
         guard let caption = textView.text, caption.count > 0 else { return }
         guard let image = selectedImage else { return }
-        guard let uploadData = UIImageJPEGRepresentation(image, 0.5) else { return }
+        guard let uploadData = image.jpegData(compressionQuality: 0.5) else { return }
         
         navigationItem.rightBarButtonItem?.isEnabled = false
         
@@ -81,6 +81,8 @@ class SharePhotoController: UIViewController {
             self.saveToDatabaseWithImageUrl(imageUrl: imageUrl)
         }
     }
+    
+    static let updateFeedNotificationName = NSNotification.Name(rawValue: "UpdateFeed")
     
     fileprivate func saveToDatabaseWithImageUrl(imageUrl: String) {
         guard let postImage = selectedImage else { return }
@@ -100,6 +102,9 @@ class SharePhotoController: UIViewController {
             
             print("Successully saved post to DB")
             self.dismiss(animated: true, completion: nil)
+            
+            // Esta es una forma de notificar a toda la aplcación y esto luego podemos agarrar en cualquier parte de la aplicación
+            NotificationCenter.default.post(name: SharePhotoController.updateFeedNotificationName, object: nil)
         }
     }
     

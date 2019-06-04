@@ -22,7 +22,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         collectionView?.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)
         
         // Registramos el header que usaremos para mostrar la foto principal
-        collectionView?.register(PhotoSelectorHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(PhotoSelectorHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
         fetchPhotos()
     }
@@ -98,7 +98,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         self.header = header
         
         if let selectedImage = selectedImage {
-            if let index = self.images.index(of: selectedImage) {
+            if let index = self.images.firstIndex(of: selectedImage) {
                 let selectedAsset = self.assets[index]
             
                 let imageManager = PHImageManager.default()
