@@ -42,6 +42,8 @@
 	<string>We would like to access the camera to take photos</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

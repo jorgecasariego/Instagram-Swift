@@ -8,9 +8,12 @@
 
 import UIKit
 import Firebase
+import FirebaseMessaging
+import UserNotifications
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -21,7 +24,80 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.rootViewController = MainTabBarController()
+        
+        //attemptRegisterForNotifications(application: application)
+        
+        // [START set_messaging_delegate]
+        Messaging.messaging().delegate = self
+        // [END set_messaging_delegate]
+        
+        // get push notification token id for user
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Registered for notifications:", deviceToken)
+        //Messaging.messaging().apnsToken = deviceToken
+        
+        if let refreshedToken = InstanceID.instanceID().token() {
+            Messaging.messaging().apnsToken = deviceToken
+            
+            print("Token generated: ", refreshedToken)
+        } else {
+            print("Could not save token becuase error with instance id token")
+        }
+    }
+    
+    // TOKEN: e4rgyHxMpC4:APA91bGJh1ivIkgmwXj3VOHxFZVGVu6Wtu6VKfrQBvA3FF_a3ZU1wfGUUMToqFbIIUBGpgjFvWXTQoSpGtenq0Z4ViEpy2-oU74wXzF1RVjSHSOgAHv0FrQzt7WzD7eWO7TplwRXSrAG
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        print("Registered with FCM with token:", fcmToken)
+    }
+    
+    // listen for user notifications
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
+    }
+    
+    private func attemptRegisterForNotifications(application: UIApplication) {
+        print("Attempting to register APNS...")
+        
+        Messaging.messaging().delegate = self
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        // user notifications auth
+        // all of this works for iOS 10+
+        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: options) { (granted, err) in
+            if let err = err {
+                print("Failed to request auth:", err)
+                return
+            }
+            
+            if granted {
+                print("Auth granted.")
+            } else {
+                print("Auth denied")
+            }
+        }
+        
+        application.registerForRemoteNotifications()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
